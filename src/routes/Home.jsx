@@ -36,7 +36,8 @@ const Home = () => {
 
     fetchTopStoriesIds()
 
-  }, [])
+  }, [stories])
+
   return (
     <>
       <List listItems={stories}/>
