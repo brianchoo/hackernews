@@ -1,0 +1,1 @@
+export const BASE_HACKERNEWS_URL = "https://hacker-news.firebaseio.com/v0"

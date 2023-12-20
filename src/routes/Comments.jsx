@@ -2,6 +2,7 @@ import { useLoaderData } from "react-router-dom";
 import { useState, useEffect } from "react";
 import Spinner from "../components/Spinner";
 import axios from "axios";
+import { BASE_HACKERNEWS_URL } from "../config/urls";
 
 const Comments = ({ props }) => {
   const [comments, setComments] = useState([]);
@@ -25,14 +26,18 @@ const Comments = ({ props }) => {
         const allComments = await Promise.all(
           kids.map(async (kid) => {
             const commentsResponse = await axios.get(
-              `https://hacker-news.firebaseio.com/v0/item/${kid}.json`
+              `${BASE_HACKERNEWS_URL}/item/${kid}.json`
             );
             return commentsResponse.data;
           })
         );
 
-        setComments(allComments);
-        console.log(allComments, "allComments");
+        const filteredAllComments = allComments.filter(
+          (comment) => !comment.deleted
+        );
+
+        setComments(filteredAllComments);
+        console.log(filteredAllComments, "allComments");
         setIsLoading(false);
       } catch (error) {
         console.log(error);

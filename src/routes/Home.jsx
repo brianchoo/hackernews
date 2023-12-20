@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import List from "../components/List";
 import Spinner from "../components/Spinner";
+import Button from "../components/Button";
+import { BASE_HACKERNEWS_URL } from "../config/urls";
 
 const Home = () => {
   const [storyIds, setStoryIds] = useState([]);
@@ -15,7 +17,7 @@ const Home = () => {
     setIsLoading(true);
     try {
       const response = await axios.get(
-        "https://hacker-news.firebaseio.com/v0/topstories.json"
+        `${BASE_HACKERNEWS_URL}/topstories.json`
       );
       const topStoriesIds = response.data.slice(
         sliceStart,
@@ -27,7 +29,7 @@ const Home = () => {
       const topStories = await Promise.all(
         topStoriesIds.map(async (id) => {
           const storyResponse = await axios.get(
-            `https://hacker-news.firebaseio.com/v0/item/${id}.json`
+            `${BASE_HACKERNEWS_URL}/item/${id}.json`
           );
           return storyResponse.data;
         })
@@ -58,13 +60,7 @@ const Home = () => {
   return (
     <>
       {isLoading ? <Spinner /> : <List listItems={stories} />}
-      <button
-        className="text-white bg-orange-500 hover:bg-orange-800 px-5 py-2.5"
-        type="button"
-        onClick={fetchTopStoriesIds}
-      >
-        More
-      </button>
+      {isLoading ? "" : <Button fetchStories={fetchTopStoriesIds} />}
     </>
   );
 };
