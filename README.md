@@ -1,8 +1,30 @@
-# React + Vite
+# Hacker News
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A Hacker News clone using [Hacker News API](https://github.com/HackerNews/API)
 
-Currently, two official plugins are available:
+## What technology is used
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+1. React.js
+2. Axios
+3. Tailwind CSS
+4. react-router-dom
+
+Use the package manager [npm](https://www.npmjs.com/) to install dependencies.
+
+```bash
+npm install
+```
+
+## How to run locally
+
+```python
+npm run dev
+
+```
+
+## How to build for production
+
+```python
+npm run build
+
+```
