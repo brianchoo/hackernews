@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
+// Component to create a timestamp element
 const TimeAgo = ({ unixTimestamp }) => {
   const [timeAgoString, setTimeAgoString] = useState("");
 
@@ -54,11 +55,7 @@ const List = ({ listItems }) => {
                   <span className="mr-1">{item.score} points by</span>
                   <span className="mr-2 font-medium">{item.by}</span>
                   <TimeAgo unixTimestamp={item.time} />
-
                   <span className="mx-2">|</span>
-                  {/* <div>
-                    Posted <TimeAgo unixTimestamp={item.time} />
-                  </div> */}
                   <Link
                     className="hover:border-b border-orange-500 ease-in-out duration-100"
                     to={`comments/${item.id}?title=${item.title}`}

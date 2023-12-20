@@ -9,6 +9,7 @@ const Comments = ({ props }) => {
   const [commentTitle, setCommentTitle] = useState("");
   const [isLoading, setIsLoading] = useState(false);
 
+  // loaderData is used for data api fetching from using createBrowserRouter loader property
   const loaderData = useLoaderData();
   const { kids } = loaderData;
 
@@ -32,12 +33,12 @@ const Comments = ({ props }) => {
           })
         );
 
+        // remove deleted comments from rendering before setting in setComments
         const filteredAllComments = allComments.filter(
           (comment) => !comment.deleted
         );
 
         setComments(filteredAllComments);
-        console.log(filteredAllComments, "allComments");
         setIsLoading(false);
       } catch (error) {
         console.log(error);
